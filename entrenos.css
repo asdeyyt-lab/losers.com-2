@@ -1,0 +1,289 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== TIPOGRAFÍAS ===== */
+@font-face {
+  font-family: 'MetalEvent';
+  src: url('MetalEvent.ttf') format('truetype');
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== DECORACIÓN GLOBAL ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  
+  /* Textura suave */
+  background: url("textura.webp");
+  opacity: 0.15;
+
+  animation: noiseMove 7s infinite linear;
+}
+
+@keyframes noiseMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 600px 600px; }
+}
+
+/* ===== BARRA SUPERIOR ===== */
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.logo {
+  width: 150px;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.35));
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.btn-menu {
+  color: white;
+  text-decoration: none;
+  font-size: 26px;
+  border: 2px solid white;
+  padding: 10px 25px;
+  transition: 0.25s;
+  font-family: 'MetalEvent';
+  letter-spacing: 2px;
+}
+
+.btn-menu:hover {
+  background: white;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* ===== TITULOS ===== */
+
+.titulo {
+  margin-top: 60px;
+  font-size: 90px;
+  text-align: center;
+  letter-spacing: 4px;
+  font-family: 'MetalEvent';
+  animation: titlePulse 3s infinite ease-in-out;
+}
+
+.subtitulo {
+  margin-top: 15px;
+  text-align: center;
+  opacity: 0.85;
+  font-size: 35px;
+  font-family: 'MetalEvent';
+  letter-spacing: 2px;
+}
+
+@keyframes titlePulse {
+  0% { text-shadow: 0 0 10px #fff; }
+  50% { text-shadow: 0 0 25px #ff0000; }
+  100% { text-shadow: 0 0 10px #fff; }
+}
+
+
+.opciones {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.opcion {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 22px 50px;
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'MetalEvent';
+  letter-spacing: 2px;
+  position: relative;
+  background-color: rgba(0,0,0,0);
+}
+
+.opcion:hover {
+  background: white;
+  color: black;
+  transform: translateY(-8px) scale(1.07);
+  box-shadow: 0 0 20px #ff0000;
+}
+
+.opcion::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid red;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.opcion:hover::after {
+  opacity: 1;
+  filter: blur(6px);
+}
+
+/* 2. Iconos temáticos en los botones */
+.opcion[data-opcion="casa"]::before {
+  content: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L12 4L21 12H19V20H5V12H3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 18px;
+}
+.opcion[data-opcion="gimnasio"]::before {
+  content: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="10" width="20" height="4" rx="1.5" fill="white" stroke="white" stroke-width="1.5"/><rect x="5.5" y="6" width="2.5" height="12" rx="1.25" fill="white"/><rect x="16" y="6" width="2.5" height="12" rx="1.25" fill="white"/></svg>');
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 18px;
+}
+.opcion[data-opcion="calistenia"]::before {
+  content: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="6" r="2" stroke="white" stroke-width="2"/><path d="M12 8V20" stroke="white" stroke-width="2"/><path d="M12 12L8 16" stroke="white" stroke-width="2"/><path d="M12 12L16 16" stroke="white" stroke-width="2"/></svg>');
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 18px;
+}
+
+/* Quitar sombra extraña de los iconos */
+.opcion::before {
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== PANEL DINÁMICO ===== */
+
+.panel-info {
+  margin: 70px auto 0;
+  max-width: 900px;
+  border: 2px solid white;
+  padding: 70px 40px 70px 40px;
+  font-size: 28px;
+  text-align: center;
+  min-height: 220px;
+  transition: 0.25s;
+  background: rgba(0,0,0,0.45);
+  font-family: 'MetalEvent';
+  letter-spacing: 2px;
+  animation: fadeIn 1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  box-shadow: 0 0 32px 6px #ff000055, 0 0 0 4px #fff2 inset;
+  border-radius: 18px;
+  border: 2.5px solid #fff;
+}
+
+/* Botón calendario igual que .opcion */
+.btn-calendario {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 22px 50px;
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'MetalEvent';
+  letter-spacing: 2px;
+  position: relative;
+  margin-top: 18px;
+}
+
+.btn-calendario:hover {
+  background: white;
+  color: black;
+  transform: translateY(-8px) scale(1.07);
+  box-shadow: 0 0 20px #ff0000;
+}
+
+.btn-calendario::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid red;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.btn-calendario:hover::after {
+  opacity: 1;
+  filter: blur(6px);
+}
+
+/* 4. Animación de entrada */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.opciones, .panel-info {
+  animation: fadeSlideIn 1.2s cubic-bezier(.6,-0.01,.3,1.01);
+}
+
+/* 5. Detalles en esquinas del panel-info */
+.panel-info::before, .panel-info::after {
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: url('data:image/svg+xml;utf8,<svg width=\'48\' height=\'48\' viewBox=\'0 0 48 48\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M4 44C16 32 32 16 44 4\' stroke=\'#ff0000\' stroke-width=\'4\' stroke-linecap=\'round\'/></svg>') no-repeat center center;
+  opacity: 0.18;
+  z-index: 2;
+}
+.panel-info::before {
+  top: -12px;
+  left: -12px;
+  transform: rotate(0deg);
+}
+.panel-info::after {
+  bottom: -12px;
+  right: -12px;
+  transform: rotate(180deg);
+}
+
+/* 6. Separadores luminosos entre botones */
+.opciones {
+  position: relative;
+}
+.opcion:not(:last-child) {
+  margin-right: 40px;
+}
+.opcion:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff0000cc 60%, transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 8px 2px #ff0000aa;
+  pointer-events: none;
+  z-index: 1;
+}

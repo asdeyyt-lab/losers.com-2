@@ -1,0 +1,269 @@
+/* Reset */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+html, body { height: 100%; }
+
+/* Fuente */
+@font-face {
+  font-family: 'MetalEvent';
+  src: url('MetalEvent.ttf') format('truetype');
+}
+
+body {
+  background-image: url("fondo-Pag.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-family: 'MetalEvent', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px;
+  overflow-x: hidden;
+  position: relative;
+}
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'MetalEvent', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: url("textura.webp");
+  opacity: 0.15;
+  animation: noiseMove 7s infinite linear;
+  z-index: 0;
+}
+
+@keyframes noiseMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 600px 600px; }
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 2; 
+}
+
+.logo img {
+  width: 220px;             
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 24px #ffffff) drop-shadow(0 0 48px #880000); /* aura rojo */
+  will-change: transform;
+  animation: floatLogo 4s ease-in-out infinite, logoPulse 3.5s ease-in-out infinite;
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.16); }
+  50% { transform: scale(1); }
+  80% { transform: scale(1.30); }
+  100% { transform: scale(1); }
+}
+
+.logo img:hover {
+  transform: translateY(-8px) scale(1.02);
+  filter: drop-shadow(0 0 22px rgba(255,255,255,0.55));
+}
+
+@keyframes floatLogo {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.intro {
+  max-width: 600px;
+  margin: 16px auto;
+  font-size: 35px;
+  opacity: 0.9;
+  line-height: 1.4;
+  z-index: 2;
+}
+
+/* ======== BOTONES CENTRALES ======== */
+.menu-central {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 30px;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* encima del grain */
+}
+
+.card {
+  border: 2px solid rgba(180,180,180,0.6);
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(3px);
+  padding: 22px 32px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'MetalEvent', sans-serif;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  width: 700px;
+  max-width: calc(100% - 48px);
+  transition: background-color 0.28s ease, color 0.25s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  position: relative;
+  background: transparent;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.55), inset 0 0 16px rgba(0,0,0,0.6);
+  border-radius: 10px;
+}
+.card {
+  background: rgba(0,0,0,0.0);
+  color: white;
+  border: 2px solid rgb(0, 0, 0);
+  padding: 22px 50px;
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'MetalEvent', sans-serif;
+  letter-spacing: 2px;
+  position: relative;
+  width: 700px;
+  max-width: calc(100% - 48px);
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  box-shadow: 0 0 px 6px #ffffff55, 0 0 0 4px #fff2 inset;
+  border-radius: 18px;
+  border: 2.5px solid #c7c7c7;
+  margin-bottom: 18px;
+  animation: fadeSlideIn 1.2s cubic-bezier(.6,-0.01,.3,1.01);
+}
+
+.card:hover {
+  /* Transición: fondo a blanco + borde rojo; sin animaciones de movimiento */
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 6px 30px rgba(160,0,1,0.16), 0 0 18px rgba(160,0,1,0.06);
+  transform: none;
+  animation: none;
+}
+.card:hover {
+  background: white;
+  color: black;
+  transform: translateY(-8px) scale(1.07);
+  box-shadow: 0 0 20px #ff0000;
+}
+
+/* Aura similar a la de `entrenos.css` */
+.card::after {
+  content: "";
+  position: absolute;
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgb(255, 255, 255);
+  opacity: 0;
+  transition: 0.3s;
+}
+.card:hover::after {
+  opacity: 1;
+  filter: blur(6px);
+}
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  inset: 0;
+  border: 4px solid #ffffff;
+  opacity: 0;
+  transition: opacity 0.6s ease, filter 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.card:hover::after {
+  opacity: 1;
+  filter: blur(6px);
+}
+
+@keyframes plateShake {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-1px); }
+  66% { transform: translateX(1.5px); }
+  100% { transform: translateX(0); }
+}
+
+.social {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 3;
+}
+
+.social img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social img:hover {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
+}
+
+.marca-asdey {
+  position: fixed;
+  left: 32px;
+  bottom: 24px;
+  font-size: 48px;
+  color: #fff;
+  font-family: 'MetalEvent', sans-serif;
+  opacity: 0.85;
+  z-index: 10;
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px #ff0000, 0 0 4px #fff;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 600px) {
+  .card {
+    width: auto;
+    font-size: 20px;
+    padding: 14px;
+  }
+}
+
+/* Botones secundarios */
+.card.small {
+  font-size: 24px;
+  padding: 12px 24px;
+  width: auto;
+  box-shadow: 0 0 16px 4px #ff000055, 0 0 0 2px #fff inset;
+  border-radius: 12px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlists</title>
+  <link rel="stylesheet" href="playlists.css">
+</head>
+<body>
+  <section id="playlists" class="menu-central">
+    <button id="back-button" onclick="window.location.href='index.html'">Volver</button>
+
+    <h1 id="title">Playlists</h1>
+    <p id="subtitle">Selecciona una lista y sube el volumen</p>
+
+    <!-- Fila 1: Metal y Grindei -->
+    <div class="playlist-row">
+      <div class="card" id="metal">Metal</div>
+      <div class="card" id="grindei">GrinDei</div>
+    </div>
+    <!-- Fila 2: Rockcito y Despecho -->
+    <div class="playlist-row">
+      <div class="card" id="rocksito">Rockcito</div>
+      <div class="card" id="despecho">Despecho</div>
+    </div>
+    <!-- Fila 3: Botones pequeños -->
+    <div class="playlist-row small">
+      <div class="card small" id="electronica" onclick="redirectTo('https://open.spotify.com/playlist/0MMtrfO07aKdFU0cdqyPVE?si=d29ca318f09a4656')">Electronica Gymcore</div>
+      <div class="card small" id="depresivos" onclick="redirectTo('https://open.spotify.com/playlist/3OKClw0mmwM4VLS9JR3xgs?si=f251c38cc3934071')">Depresivos</div>
+      <div class="card small" id="audios" onclick="redirectTo('https://soundcloud.com/you/likes')">Audios</div>
+    </div>
+  </section>
+
+  <!-- Redes sociales y copyright -->
+  <div class="social">
+    <a href="https://twitter.com/" target="_blank" rel="noopener"><img src="icons/twitter.svg" alt="Twitter"></a>
+    <a href="https://instagram.com/" target="_blank" rel="noopener"><img src="icons/instagram.svg" alt="Instagram"></a>
+    <a href="https://youtube.com/" target="_blank" rel="noopener"><img src="icons/youtube.svg" alt="YouTube"></a>
+  </div>
+
+  <div class="asdey">Asdey©</div>
+  <script src="playlists.js"></script>
+</body>
+</html>
